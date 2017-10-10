@@ -40,14 +40,8 @@ class Cursor
   end
 
   def get_input
-    begin
-      key = KEYMAP[read_char]
-      handle_key(key)
-    rescue ArgumentError
-      p "Error"
-      p @cursor_pos
-      retry
-    end
+    key = KEYMAP[read_char]
+    handle_key(key)
   end
 
   private
@@ -93,12 +87,10 @@ class Cursor
   end
 
   def update_pos(diff)
-
-    old_pos = @cursor_pos.dup
     @cursor_pos.map!.with_index { |el, idx| el + diff[idx] }
-    unless @board.in_bounds(@cursor_pos)
-      @cursor_pos = old_pos
-      raise ArgumentError
+    if @board.in_bounds(@cursor_pos)
+    else
+      @cursor_pos.map!.with_index { |el, idx| el - diff[idx] }
     end
     @cursor_pos
   end
