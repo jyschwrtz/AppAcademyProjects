@@ -1,5 +1,6 @@
 require_relative "piece.rb"
 class Board
+  attr_reader :grid
 
   def initialize
     make_starting_grid
@@ -24,11 +25,13 @@ class Board
     raise ArgumentError unless self[to_pos].is_a?(Piece) #Change with color
 
     self[from_pos], self[to_pos] = NullPiece.new(), self[from_pos]
-
-
-
-
   end
+
+  def in_bounds(pos)
+    return true if pos[0].between?(0,7) && pos[1].between?(0,7)
+    false
+  end
+
 
   def move_piece!(from_pos, to_pos)
   end
