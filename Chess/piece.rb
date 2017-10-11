@@ -1,11 +1,14 @@
 class Piece
-  attr_reader :symbol
+  attr_accessor :pos
+  attr_reader :symbol, :color
 
-  def initialize(color)
+  def initialize(color = :white, board, pos)
     @symbol = "P"
     @color = color
     @color1 = :black
     @color2 = :white
+    @board = board
+    @pos = pos
   end
 
   def to_s()
@@ -14,7 +17,8 @@ class Piece
   def empty?()
   end
 
-  def symbol()
+  def update_pos(new_pos)
+    @pos = new_pos
   end
 
   def valid_moves()
@@ -22,54 +26,6 @@ class Piece
 
   private
   def move_into_check(to_pos)
-  end
-
-end
-
-
-class Pawn < Piece
-
-  def initialize
-    @symbol = "P"
-    @at_start_row = true
-
-  end
-
-  def moves
-
-  end
-
-protected
-
-  def at_start_row?
-    @at_start_row
-  end
-
-  def forward_dir
-
-  end
-
-  def foward_steps
-  end
-
-  def side_attacks
-  end
-
-
-end
-
-
-
-
-
-
-class NullPiece < Piece
-
-  def initialize
-    @symbol = " "
-  end
-
-  def moves()
   end
 
 end
