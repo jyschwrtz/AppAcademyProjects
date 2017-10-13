@@ -35,20 +35,23 @@ class MyStack
 
   def pop
     arg_h = @store.pop
-    if arg_h[:value] == @max
-      @max = arg_h[:old_max]
+    if arg_h[:value] == @max && arg_h[:value] == @min
+      @max = arg_h[:max]
+      @min = arg_h[:min]
+    elsif arg_h[:value] == @max
+      @max = arg_h[:max]
     elsif arg_h[:value] == @min
-      @min = arg_h[:old_min]
+      @min = arg_h[:min]
     end
 
     arg_h
   end
 
   def push(arg)
+    arg_h = { value: arg, max: @max, min: @min }
+    @store.push(arg_h)
     @max ||= arg
     @min ||= arg
-    arg_h = { value: arg, old_max: @max, old_min: @min }
-    @store.push(arg_h)
     @max = arg if arg > @max
     @min = arg if arg < @min
   end
@@ -68,7 +71,7 @@ class MyStack
 end
 
 class StackQueue
-  attr_reader :store
+  attr_reader :store, :temp
   def initialize
     @temp = MyStack.new
     @store = MyStack.new
@@ -76,29 +79,35 @@ class StackQueue
 
   def enqueue(arg)
     @temp.push(arg)
-    @temp.size.times do
-      @store.push(@temp.pop)
-    end
-    @store
   end
 
   def dequeue
+    if @store.empty?
+      @store.push(@temp.pop[:value]) until @temp.empty?
+    end
     @store.pop
   end
 
   def size
-    @store.size
+    @store.size + @temp.size
+
   end
 
   def empty?
-    @store.empty?
+    @store.empty? && @temp.empty?
   end
 
   def max
-    @store.max
+    maxes = []
+    maxes << @store.max unless @store.empty?
+    maxes << @temp.max unless @temp.empty?
+    maxes.max
   end
 
   def min
-    @store.min
+    mins = []
+    mins << @store.min unless @store.empty?
+    mins << @temp.min unless @temp.empty?
+    mins.max
   end
 end
