@@ -79,7 +79,7 @@ describe LRUCache do
       lru.get(2)
       list = lru.instance_variable_get(:@store)
       map = lru.instance_variable_get(:@map)
-      expect(list.last).to be(map[2])
+      expect(list.last.val).to be(map[2])
     end
   end
 end
