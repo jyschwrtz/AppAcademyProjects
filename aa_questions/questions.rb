@@ -1,31 +1,31 @@
 require_relative 'main'
 
-class Question
+class Question < ModelBase
   attr_accessor :id, :title, :body, :author_id
 
-  def self.all
-    data = QuestionsDatabase.instance.execute(<<-SQL)
-      SELECT
-        *
-      FROM
-        questions
-    SQL
+  # def self.all
+  #   data = QuestionsDatabase.instance.execute(<<-SQL)
+  #     SELECT
+  #       *
+  #     FROM
+  #       questions
+  #   SQL
+  #
+  #   data.map { |data| Question.new(data) }
+  # end
 
-    data.map { |data| Question.new(data) }
-  end
-
-  def self.find_by_id(id)
-    data = QuestionsDatabase.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        questions
-      WHERE
-        id = ?
-    SQL
-
-    Question.new(data.first)
-  end
+  # def self.find_by_id(id)
+  #   data = QuestionsDatabase.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       questions
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   Question.new(data.first)
+  # end
 
   def self.find_by_author_id(author_id)
     data = QuestionsDatabase.instance.execute(<<-SQL, author_id)
@@ -83,27 +83,27 @@ class Question
     QuestionLike.most_liked_questions(n)
   end
 
-  def save
-    if @id
-      #then update
-      QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id, @id)
-        UPDATE
-          questions
-        SET
-          title = ?, body = ?, author_id = ?
-        WHERE
-          id = ?
-      SQL
-    else
-      #then insert
-      QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id)
-        INSERT INTO
-          questions (title, body, author_id)
-        VALUES
-          (?, ?, ?)
-      SQL
-      @id = QuestionsDatabase.instance.last_insert_row_id
-    end
-  end
+  # def save
+  #   if @id
+  #     #then update
+  #     QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id, @id)
+  #       UPDATE
+  #         questions
+  #       SET
+  #         title = ?, body = ?, author_id = ?
+  #       WHERE
+  #         id = ?
+  #     SQL
+  #   else
+  #     #then insert
+  #     QuestionsDatabase.instance.execute(<<-SQL, @title, @body, @author_id)
+  #       INSERT INTO
+  #         questions (title, body, author_id)
+  #       VALUES
+  #         (?, ?, ?)
+  #     SQL
+  #     @id = QuestionsDatabase.instance.last_insert_row_id
+  #   end
+  # end
 
 end

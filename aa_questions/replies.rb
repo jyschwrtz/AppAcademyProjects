@@ -1,31 +1,31 @@
 require_relative 'main'
 
-class Replies
+class Replies < ModelBase
   attr_accessor :id, :question_id, :parent_reply_id, :user_id, :body
 
-  def self.all
-    data = QuestionsDatabase.instance.execute(<<-SQL)
-      SELECT
-        *
-      FROM
-        replies
-    SQL
+  # def self.all
+  #   data = QuestionsDatabase.instance.execute(<<-SQL)
+  #     SELECT
+  #       *
+  #     FROM
+  #       replies
+  #   SQL
+  #
+  #   data.map { |data| Replies.new(data) }
+  # end
 
-    data.map { |data| Replies.new(data) }
-  end
-
-  def self.find_by_id(id)
-    data = QuestionsDatabase.instance.execute(<<-SQL, id)
-      SELECT
-        *
-      FROM
-        replies
-      WHERE
-        id = ?
-    SQL
-
-    Replies.new(data.first)
-  end
+  # def self.find_by_id(id)
+  #   data = QuestionsDatabase.instance.execute(<<-SQL, id)
+  #     SELECT
+  #       *
+  #     FROM
+  #       replies
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #
+  #   Replies.new(data.first)
+  # end
 
   def self.find_by_user_id(user_id)
     data = QuestionsDatabase.instance.execute(<<-SQL, user_id)
@@ -105,27 +105,27 @@ class Replies
     data.map { |data| Replies.new(data) }
   end
 
-  def save
-    if @id
-      #then update
-      QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_reply_id, @user_id, @body, @id)
-        UPDATE
-          replies
-        SET
-          question_id = ?, parent_reply_id = ?, user_id = ?, body = ?
-        WHERE
-          id = ?
-      SQL
-    else
-      #then insert
-      QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_reply_id, @user_id, @body)
-        INSERT INTO
-          replies (question_id, parent_reply_id, user_id, body)
-        VALUES
-          (?, ?, ?, ?)
-      SQL
-      @id = QuestionsDatabase.instance.last_insert_row_id
-    end
-  end
+  # def save
+  #   if @id
+  #     #then update
+  #     QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_reply_id, @user_id, @body, @id)
+  #       UPDATE
+  #         replies
+  #       SET
+  #         question_id = ?, parent_reply_id = ?, user_id = ?, body = ?
+  #       WHERE
+  #         id = ?
+  #     SQL
+  #   else
+  #     #then insert
+  #     QuestionsDatabase.instance.execute(<<-SQL, @question_id, @parent_reply_id, @user_id, @body)
+  #       INSERT INTO
+  #         replies (question_id, parent_reply_id, user_id, body)
+  #       VALUES
+  #         (?, ?, ?, ?)
+  #     SQL
+  #     @id = QuestionsDatabase.instance.last_insert_row_id
+  #   end
+  # end
 
 end

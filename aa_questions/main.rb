@@ -1,7 +1,7 @@
+require_relative 'Model'
 require_relative 'user'
 require_relative 'replies'
 require_relative 'questions'
 require_relative 'questionfollow'
 require_relative 'questionlike'
 require_relative 'questionsdatabase'
-require_relative 'Model'

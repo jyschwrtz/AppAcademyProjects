@@ -3,16 +3,16 @@ require_relative 'main'
 class User < ModelBase
   attr_accessor :id, :fname, :lname
 
-  def self.all
-    data = QuestionsDatabase.instance.execute(<<-SQL)
-      SELECT
-        *
-      FROM
-        users
-    SQL
-
-    data.map { |data| User.new(data) }
-  end
+  # def self.all
+  #   data = QuestionsDatabase.instance.execute(<<-SQL)
+  #     SELECT
+  #       *
+  #     FROM
+  #       users
+  #   SQL
+  #
+  #   data.map { |data| User.new(data) }
+  # end
 
   # def self.find_by_id(id)
   #   data = QuestionsDatabase.instance.execute(<<-SQL, id)
@@ -74,27 +74,27 @@ class User < ModelBase
     data[0]['karma']
   end
 
-  def save
-    if @id
-      #then update
-      QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname, @id)
-        UPDATE
-          users
-        SET
-          fname = ?, lname = ?
-        WHERE
-          id = ?
-      SQL
-    else
-      #then insert
-      QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname)
-        INSERT INTO
-          users (fname, lname)
-        VALUES
-          (?, ?)
-      SQL
-      @id = QuestionsDatabase.instance.last_insert_row_id
-    end
-  end
+  # def save
+  #   if @id
+  #     #then update
+  #     QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname, @id)
+  #       UPDATE
+  #         users
+  #       SET
+  #         fname = ?, lname = ?
+  #       WHERE
+  #         id = ?
+  #     SQL
+  #   else
+  #     #then insert
+  #     QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname)
+  #       INSERT INTO
+  #         users (fname, lname)
+  #       VALUES
+  #         (?, ?)
+  #     SQL
+  #     @id = QuestionsDatabase.instance.last_insert_row_id
+  #   end
+  # end
 
 end
