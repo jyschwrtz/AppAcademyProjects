@@ -15,5 +15,5 @@ class User < ApplicationRecord
   has_many :visited_urls,
   through: :visits,
   source: :shortened_urls
-  
+
 end

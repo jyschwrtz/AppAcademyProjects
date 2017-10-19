@@ -1,6 +1,7 @@
 class ShortenedUrl < ApplicationRecord
   validates :user_id,:long_url, presence: true
   validates :short_url, uniqueness: true
+  validate :no_spamming
 
   belongs_to :submitter,
   class_name: :User,
@@ -16,6 +17,26 @@ class ShortenedUrl < ApplicationRecord
   Proc.new { distinct },
   through: :visits,
   source: :users
+
+  has_many :taggings,
+  class_name: :Tagging,
+  primary_key: :id,
+  foreign_key: :shortened_url_id
+
+  has_many :tag_topics,
+  through: :taggings,
+  source: :tag_topics
+
+
+  def no_spamming
+    user = self.submitter
+    count = user.submitted_urls.where("created_at > ?", Time.now - 300).count
+    if count > 5
+      errors.add(:user_id, "No spamming allowed")
+    else
+      true
+    end
+  end
 
   def self.random_code
     code = SecureRandom.urlsafe_base64

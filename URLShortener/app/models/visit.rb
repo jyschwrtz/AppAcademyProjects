@@ -11,6 +11,8 @@ class Visit < ApplicationRecord
   primary_key: :id,
   foreign_key: :shortened_url_id
 
+
+
   def self.record_visit!(user, shortened_url)
     Visit.new(user_id: user.id, shortened_url_id: shortened_url.id)
   end
