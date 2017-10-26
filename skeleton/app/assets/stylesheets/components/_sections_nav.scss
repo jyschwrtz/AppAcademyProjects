@@ -1,0 +1,26 @@
+
+
+.topic {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $light-gray;
+  align-items: center;
+  font-family: $sans-serif;
+}
+
+.topic li {
+  margin: 8px 6px;
+}
+
+.topic li:hover {
+  background-color: $lightest-gray;
+}
+
+.topic li:last-of-type {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.topic li:last-of-type:hover {
+  background-color: inherit;
+}

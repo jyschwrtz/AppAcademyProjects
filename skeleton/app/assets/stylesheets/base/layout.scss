@@ -6,26 +6,43 @@ html {
 }
 
 body {
-	// ...
+	width: 80%;
+	margin: 0 auto;
+	font-family: $serif;
+	font-size: 12px;
 }
 
 button {
-	// background-color:
-	// border-color:
-	// color:
-	// font-weight:
-	// padding:
-	// border-radius:
-	// transition:
-	// font-family:
-	// text-transform:
-	// font-size:
-	// text-align:
+	background-color: $light-blue;
+	border-color: $blue;
+	color: $white;
+	font-weight: 700;
+	padding: 5px 10px;
+	border-radius: 2px;
+	transition: all;
+	font-family: "nyt-franklin", "Helvetica Neue", Arial, sans-serif;
+	text-transform: inherit;
+	font-size: inherit;
+	text-align: center;
 }
 
 button:hover {
-	// background-color:
-	// border-color:
+	background-color: $dark-blue;
+	border-color: $darkest-blue
+}
+
+a {
+	margin: 0px 2px;
+	padding: 3px 0px;
+	// justify-content: center;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.hidden {
+	display: none;
 }
 
 /*
