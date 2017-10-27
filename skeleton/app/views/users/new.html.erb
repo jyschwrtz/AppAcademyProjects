@@ -1,0 +1,17 @@
+<h1>Welcome to 99Cats</h1>
+<h1>Please Sign Up Here</h1>
+
+<% if flash.now[:errors] %>
+  <% flash.now[:errors].each do |error| %>
+   <%= error %><br />
+  <% end %>
+<% end %>
+
+<form action="<%= users_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="username">Username</label>
+  <input id="username" type="text" name="user[username]" value="">
+  <label for="password">Password</label>
+  <input id="password" type="password" name="user[password]" value="">
+  <input type="submit" value="Sign Up">
+</form>
