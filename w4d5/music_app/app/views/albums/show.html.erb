@@ -2,3 +2,26 @@
 <h1>Year: <%= @album.date %></h1>
 <h1>Recording: <%= @album.live ? "Live" : "Studio" %></h1>
 <h1>Band: <%= @album.band.name %></h1>
+
+<h1>Tracks: </h1>
+
+<ul class="tracks">
+
+<% @tracks.each_with_index do |track, idx| %>
+  <li>
+    <%= link_to track_url(track) do %>
+      <%= "Track #{idx + 1}: #{track.title}" %>
+    <% end %>
+    <div class="">
+
+    <%= button_to "Edit", edit_track_url(track), method: :get, class: "btn" %>
+    <%= button_to "Delete", track_url(track), method: :delete, class: "btn" %>
+    </div>
+  </li>
+<% end %>
+
+</ul>
+
+
+
+<%= button_to "Edit Album", edit_album_url(@album), method: :get, class: "btn" %>

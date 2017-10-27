@@ -7,8 +7,10 @@ class Album < ApplicationRecord
   primary_key: :id,
   foreign_key: :band_id
 
-  # def year=(year)
-  #   self.year = year.to_i
-  # end
+  has_many :tracks,
+  class_name: :Track,
+  primary_key: :id,
+  foreign_key: :album_id,
+  dependent: :destroy
 
 end

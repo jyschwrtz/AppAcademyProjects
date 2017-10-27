@@ -17,7 +17,24 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find_by(id: params[:id])
+    @tracks = @album.tracks
     render :show
+  end
+
+  def edit
+    @bands = Band.all
+    @album = Album.find_by(id: params[:id])
+    render :edit
+  end
+
+  def update
+    @album = Album.find_by(id: params[:id])
+    if @album.update(album_params)
+      redirect_to album_url(@album)
+    else
+      flash.now[:errors] = @album.errors.full_messages
+      render :edit
+    end
   end
 
   private

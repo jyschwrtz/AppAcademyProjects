@@ -1,0 +1,18 @@
+// Place all the styles related to the Tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.tracks, {
+  list-style: none;
+}
+
+.tracks li {
+  padding: 2px;
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  align-items: center
+}
+
+.tracks li div {
+  display: flex;
+}

@@ -12,7 +12,14 @@
 
   <body>
     <header>
+      <section class="logo">
+
+      <%= link_to bands_url do %>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beats_Music_logo.svg/2000px-Beats_Music_logo.svg.png" alt="">
+      <h1>Beats By Jay</h1>
+      <% end %>
+
+      </section>
 
       <% unless logged_in? %>
         <nav class="">

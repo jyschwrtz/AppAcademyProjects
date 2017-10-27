@@ -1,0 +1,63 @@
+<section class="form">
+
+<h1>Add a new Track
+  <i class="fa fa-play-circle" aria-hidden="true"></i>
+</h1>
+
+<% unless flash.now[:errors].nil? %>
+  <ul>
+    <% flash.now[:errors].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<br>
+
+  <form action="<%= tracks_url %>" method="post">
+    <%= auth_token %>
+
+    <label for="track_title">Track Title: </label>
+    <input id="track_title" type="text" name="track[title]" value="">
+
+    <br>
+
+    <label for="ord">Track Number: </label>
+    <input id="ord" type="text" name="track[ord]" value="">
+
+    <br>
+
+    <label for="Album Type">Album Type: </label>
+    <input id="bonus_button"
+          type="radio"
+          name="track[bonus]"
+          value="true">
+    <label for="bonus_button">Bonus</label>
+    <input id="regular_button"
+          type="radio"
+          name="track[live]"
+          value="false">
+    <label for="regular_button">Regular</label>
+
+    <br>
+
+    <label for="album_name">Album Name</label>
+    <select name="track[album_id]" id="album_name">
+      <% @albums.each do |album| %>
+        <option
+          <%= album.id == params[:album_id].to_i ? "selected" : "" %>
+          value="<%= album.id %>">
+          <%= album.title %>
+        </option>
+      <% end %>
+
+    </select>
+
+    <br>
+
+    <input type="submit" value="Add Track" class="btn">
+
+  </form>
+
+</section>

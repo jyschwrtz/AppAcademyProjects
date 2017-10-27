@@ -1,0 +1,66 @@
+<section class="form">
+
+<h1>Edit Existing Album
+  <i class="fa fa-play-circle" aria-hidden="true"></i>
+</h1>
+
+<% unless flash.now[:errors].nil? %>
+  <ul>
+    <% flash.now[:errors].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<br>
+
+  <form action="<%= album_url(@album) %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <%= auth_token %>
+
+    <label for="album_title">Album Title: </label>
+    <input id="album_title" type="text" name="album[title]" value="<%= @album.title %>">
+
+    <br>
+
+    <label for="year">Album Year: </label>
+    <input id="year" type="text" name="album[date]" value="<%= @album.date %>">
+
+    <br>
+
+    <label for="recording_style">Recording Style: </label>
+    <input id="live_button"
+          type="radio"
+          name="album[live]"
+          value="true"
+          <%= @album.live == true ? "checked" : "" %> >
+    <label for="live_button">Live</label>
+    <input id="studio_button"
+          type="radio"
+          name="album[live]"
+          value="false"
+          <%= @album.live == false ? "checked" : "" %> >
+    <label for="studio_button">Studio</label>
+
+    <br>
+
+    <label for="band_name">Band Name</label>
+    <select name="album[band_id]" id="band_name">
+      <% @bands.each do |band| %>
+        <option
+          <%= band.id == @album.band_id ? "selected" : "" %>
+          value="<%= band.id %>">
+          <%= band.name %>
+        </option>
+      <% end %>
+
+    </select>
+
+    <br>
+
+    <input type="submit" value="Update Album" class="btn">
+
+  </form>
+
+</section>
