@@ -1,0 +1,18 @@
+<h1>All the Bands</h1>
+
+<ul class="bands">
+
+<% @bands.each_with_index do |band, idx| %>
+  <li>
+    <%= link_to band_url(band) do %>
+      <%= "Band #{idx + 1}: #{band.name}" %>
+    <% end %>
+
+    <div class="">
+    <%= button_to "Edit", edit_band_url(band), method: :get, class: "btn" %>
+    <%= button_to "Delete", band_url(band), method: :delete, class: "btn" %>
+    </div>
+  </li>
+<% end %>
+
+</ul>

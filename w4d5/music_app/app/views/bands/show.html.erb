@@ -1,0 +1,22 @@
+<h1><%= @band.name %> Band Profile</h1>
+
+<ul class="albums">
+
+<% @albums.each_with_index do |album, idx| %>
+  <li>
+    <%= link_to album_url(album) do %>
+      <%= "Album #{idx + 1}: #{album.title}" %>
+    <% end %>
+    <div class="">
+
+    <%= button_to "Edit", edit_album_url(album), method: :get, class: "btn" %>
+    <%= button_to "Delete", album_url(album), method: :delete, class: "btn" %>
+    </div>
+  </li>
+<% end %>
+
+</ul>
+
+
+<%= button_to "Add Album", new_band_album_url(@band), method: :get, class: "btn" %>
+<%= button_to "Edit Band", edit_band_url(@band), method: :get, class: "btn" %>

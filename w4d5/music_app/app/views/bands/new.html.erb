@@ -1,0 +1,28 @@
+<section class="form">
+
+<h1>Add a New Band
+  <i class="fa fa-music" aria-hidden="true"></i>
+</h1>
+
+<% unless flash.now[:errors].nil? %>
+  <ul>
+    <% flash.now[:errors].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<br>
+
+  <form action="<%= bands_url %>" method="post">
+    <%= auth_token %>
+
+    <label for="name">Name: </label>
+    <input id="name" type="text" name="band[name]" value="">
+
+    <input type="submit" value="Add Band" class="btn">
+
+  </form>
+
+</section>

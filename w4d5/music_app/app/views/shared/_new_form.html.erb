@@ -1,0 +1,33 @@
+<section class="form">
+
+<h1><%= action %></h1>
+
+<% unless flash.now[:errors].nil? %>
+  <ul>
+    <% flash.now[:errors].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<br>
+
+  <form action="<%= action_url %>" method="post">
+    <%= auth_token %>
+
+    <label for="email">Email: </label>
+    <input id="email" type="text" name="user[email]" value="">
+
+    <br>
+
+    <label for="password">Password: </label>
+    <input id="password" type="password" name="user[password]" value="">
+
+    <br>
+
+    <input type="submit" value="<%= action %>" class="user_links">
+
+  </form>
+
+</section>

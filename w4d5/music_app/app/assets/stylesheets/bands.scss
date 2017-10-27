@@ -1,0 +1,23 @@
+// Place all the styles related to the Bands controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bands, {
+  list-style: none;
+}
+
+.bands li {
+  padding: 2px;
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  align-items: center
+}
+
+.bands li div {
+  display: flex;
+}
+
+.bands ul {
+
+}

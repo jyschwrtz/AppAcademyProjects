@@ -1,0 +1,60 @@
+body {
+  background: -webkit-linear-gradient(right,rgba(0,0,0,0),$my_blue);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px, solid, black;
+  margin-bottom: 10px;
+}
+
+
+header img {
+  width: 80px;
+  height: 80px;
+}
+
+.btn,
+.btn>a:link,
+.btn>a:visited {
+  border-radius: 5px;
+  background-color: $blue;
+  color: white;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.btn:hover, .btn>a:hover {
+  background-color: $dark-blue;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user_log_in input {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+input {
+  border: 1px solid $gray;
+  background-color: $white;
+  margin: 6px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main_content {
+  padding-top: 10px;
+  width: 800px;
+  border-top: 1px solid $gray;
+  // justify-content: center;
+}

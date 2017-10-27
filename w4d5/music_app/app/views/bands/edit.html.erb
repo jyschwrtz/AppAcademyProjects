@@ -1,0 +1,29 @@
+<section class="form">
+
+<h1>Edit Existing Band
+  <i class="fa fa-music" aria-hidden="true"></i>
+</h1>
+
+<% unless flash.now[:errors].nil? %>
+  <ul>
+    <% flash.now[:errors].each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<br>
+
+  <form action="<%= band_url(@band) %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <%= auth_token %>
+
+    <label for="name">Name: </label>
+    <input id="name" type="text" name="band[name]" value="<%= @band.name %>">
+
+    <input type="submit" value="Update Band" class="btn">
+
+  </form>
+
+</section>

@@ -6,9 +6,37 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beats_Music_logo.svg/2000px-Beats_Music_logo.svg.png" alt="">
+
+      <% unless logged_in? %>
+        <nav class="">
+          <button type="button" class="btn">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <%= link_to 'Sign In', new_session_url %>
+          </button>
+          <button type="button" class="btn">
+          <%= link_to 'Sign Up', new_user_url %>
+          </button>
+        </nav>
+      <% else %>
+      <nav class="">
+        <button type="button" class="btn">
+          <%= link_to 'Sign Out', session_url, method: :delete %>
+        </button>
+      </nav>
+      <% end %>
+    </header>
+
+    <section class="main_content">
+
+      <%= yield %>
+
+    </section>
   </body>
 </html>
