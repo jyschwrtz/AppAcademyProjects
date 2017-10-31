@@ -1,0 +1,10 @@
+<% if @goal.private == false || @goal.user == current_user %>
+
+  <%= @goal.body %>
+  <%= "This goal is #{@goal.private ? "private" : "public" }" %>
+
+<% else %>
+
+  <%= "You do not have permission to view this" %>
+
+<% end %>
