@@ -1,0 +1,5 @@
+<h1><%= @post.title %></h1>
+<p><%= link_to @post.url, @post.url %></p>
+<p><%= @post.content %></p>
+
+<%= button_to "Sub Topics", subs_url, class: 'btn', method: :get%>

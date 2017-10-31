@@ -1,0 +1,16 @@
+<h1><%= @sub.title %></h1>
+<p><%= @sub.description %></p>
+
+<ul>
+  <% @sub.posts.each do |post| %>
+  <li>
+    <%= post.title %>
+    <%= post.url %>
+    <%= post.content %>
+    <%= "Author: #{post.author.username}" %>
+  </li>
+  <% end %>
+</ul>
+
+
+<%= button_to "Sub Topics", subs_url, class: 'btn', method: :get%>

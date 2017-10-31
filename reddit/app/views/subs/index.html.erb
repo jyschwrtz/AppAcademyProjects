@@ -1,0 +1,15 @@
+<h1>Sub Topics</h1>
+
+<ul>
+  <% @subs.each do |sub| %>
+  <li>
+    <%= sub.title %>
+    <%= sub.description %>
+    <%= button_to "Edit Sub", edit_sub_url(sub), method: :get, class: 'btn' %>
+    <!-- <%#= button_to "Remove Sub", sub_url(sub), method: :delete %> -->
+  </li>
+  <% end %>
+</ul>
+
+<%= button_to "Add New Sub-Topic", new_sub_url, method: :get, class: 'btn' %>
+<%= button_to "Add New Post", new_post_url, method: :get, class: 'btn' %>
