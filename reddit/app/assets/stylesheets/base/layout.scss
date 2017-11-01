@@ -7,8 +7,16 @@ header {
   justify-content: space-between;
   border-bottom: 1px solid #eee;
   margin-bottom: 10px;
+  background: red;
+  border-bottom: 1px solid black;
 }
 
+main {
+  width: 900px;
+  margin: auto;
+  // border-left: 1px solid black;
+  // border-right: 1px solid black;
+}
 
 header img {
   width: 80px;
@@ -16,14 +24,22 @@ header img {
   display: block;
 }
 
+.link:hover {
+  text-decoration: underline;
+}
+
+.link {
+  font-weight: bolder;
+}
 
 .btn,
 .btn>a:link,
 .btn>a:visited {
   border-radius: 3px;
-  background-color: gray;
+  background-color: white;
+  border: 1px solid #d0d0d0;
   color: black;
-  padding: 2px;
+  padding: 1px;
   text-decoration: none;
 }
 

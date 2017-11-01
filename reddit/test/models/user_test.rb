@@ -8,6 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  moderator       :boolean          default(FALSE)
 #
 
 require 'test_helper'

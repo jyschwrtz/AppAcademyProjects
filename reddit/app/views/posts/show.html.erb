@@ -1,5 +1,41 @@
 <h1><%= @post.title %></h1>
-<p><%= link_to @post.url, @post.url %></p>
+<p><%= link_to @post.url, "https://www.google.com/", class: "link" %></p>
 <p><%= @post.content %></p>
 
+<%= button_to "Edit Post", edit_post_url(@post), method: :get %>
+<%= button_to "Delete Post", post_url(@post), method: :delete %>
+
+
+<h3>Subs:</h3>
+<ul class="index">
+  <% @post.subs.each do |sub| %>
+    <li>
+      Title: <%= button_to sub.title, sub_url(sub), method: :get, class: 'btn' %></li>
+  <% end %>
+</ul>
+
+<br>
+<br>
+
+<h3>Comments:</h3>
+<ul class="comments">
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <li>
+    <strong class="author"><%= comment.author.username %>: </strong><%= comment.content %>
+    <%= link_to "reply", comment_url(comment), method: :get, class: 'reply' %>
+    <ul class="child_comments">
+      <% comment.child_comments.each do |child| %>
+        <li>
+          <strong class="author"><%= "  #{child.author.username}: " %></strong><%= child.content %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<%= button_to "Add Comment", new_post_comment_url(@post), method: :get, class: 'btn' %>
+
+<br>
+<br>
 <%= button_to "Sub Topics", subs_url, class: 'btn', method: :get%>

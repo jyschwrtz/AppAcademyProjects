@@ -14,9 +14,8 @@
   <br>
 
   <label for="content">Content</label> <br>
-  <textarea name="post[content]" rows="8" cols="80" id="content"><%= @post.content %></textarea>
+  <textarea name="post[content]" id="content"><%= @post.content %></textarea>
 
-  <input class="btn" type="submit" value="Create New Post">
 
   <label>Sub Categories</label>
 
@@ -26,9 +25,13 @@
     <label><%= sub.title %>
       <input
         type="checkbox"
-        name="post[sub_ids]"
-        value="<%= sub.id %>">
+        name="post[sub_ids][]"
+        value="<%= sub.id %>"
+        <%= "checked" if @post.sub_ids.include?(sub.id) %>
+        >
       </label>
   <% end %>
+
+  <input class="btn" type="submit" value="Create New Post">
 
 </form>

@@ -1,0 +1,30 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments li {
+  display: block;
+  // border: 1px solid black;
+  margin: 5px 0px;
+
+}
+
+.author {
+  font-weight: 700;
+}
+
+.child_comments {
+  position: relative;
+  left: 15px;
+}
+
+.reply {
+  font-style: italic;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.reply:hover {
+  text-decoration: underline;
+  font-weight: 700;
+}

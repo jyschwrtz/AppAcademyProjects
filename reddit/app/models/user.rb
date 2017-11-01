@@ -6,9 +6,9 @@
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  moderator   :boolean              default: false
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  moderator       :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
@@ -25,6 +25,13 @@ class User < ApplicationRecord
     class_name: :Post,
     primary_key: :id,
     foreign_key: :author_id
+
+  has_many :comments,
+    class_name: :Comment,
+    primary_key: :id,
+    foreign_key: :author_id,
+    dependent: :destroy
+
 
   attr_reader :password
 
