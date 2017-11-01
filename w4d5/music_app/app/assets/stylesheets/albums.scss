@@ -13,6 +13,10 @@
   align-items: center
 }
 
+.albums li a:hover {
+  text-decoration: underline;
+}
+
 .albums li div {
   display: flex;
 }

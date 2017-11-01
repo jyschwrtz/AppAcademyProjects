@@ -13,6 +13,11 @@
   align-items: center
 }
 
+.tracks li a:hover {
+  text-decoration: underline;
+}
+
+
 .tracks li div {
   display: flex;
 }
