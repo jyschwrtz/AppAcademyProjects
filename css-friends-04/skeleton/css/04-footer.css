@@ -1,0 +1,29 @@
+/* PHASE 4: Footer */
+
+.footer-nav {
+  display: flex;
+  background-color: white;
+  margin: 0 auto;
+  width: 900px;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+  border: 1px solid #ccc;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.footer-copyright {
+  padding: 20px 15px;
+  margin-left: 5px;
+}
+
+.footer-list {
+  display: flex;
+  margin-right: 10px;
+}
+
+.footer-list li {
+  padding: 20px 10px;
+}
