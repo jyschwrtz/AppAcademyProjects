@@ -13,3 +13,42 @@
 .profile-picture {
 
 }
+
+.content-sidebar {
+  padding-bottom: 20px;
+}
+
+.profile-info {
+  margin: 20px 0;
+}
+
+
+.profile-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-info p {
+  margin: 20px 0;
+}
+
+.profile-nav {
+  margin: 20px 0;
+}
+
+.profile-nav-list li {
+  border-top: 1px solid #ccc;
+  font-weight: 700;
+}
+.profile-nav-list li:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-nav-list li a {
+  display: block;
+  padding: 5px
+}
+
+.profile-nav-list li a:hover {
+  background-color: #eee;
+}
