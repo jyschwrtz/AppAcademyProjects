@@ -55,3 +55,4 @@ let testGame = new Game();
 // testGame.promptMove((startTowerIdx, endTowerIdx) => console.log(startTowerIdx + " " + endTowerIdx));
 console.log(testGame.isValidMove(0,1));
 console.log(testGame.isValidMove(1,0));
+reader.close();
