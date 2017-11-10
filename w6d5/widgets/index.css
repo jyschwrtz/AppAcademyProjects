@@ -1,0 +1,30 @@
+.clock {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  width: 500px;
+  margin: auto;
+  box-sizing: border-box;
+  /*display: flex;*/
+}
+
+.clock > h1 {
+  margin-bottom: 5px;
+}
+
+.clock-box {
+  color: white;
+
+  padding: 20px;
+  background: blue;
+  border: 1px solid black;
+}
+
+.clock-time, .clock-date{
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clock-time h1, .clock-date h1 {
+  margin: 0;
+}
