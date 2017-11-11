@@ -16,7 +16,6 @@ class Weather extends React.Component {
     request.onload = () => {
       if (request.status >= 200 && request.status < 400) {
         var resp = JSON.parse(request.responseText);
-        console.log(resp);
         this.setState({ weather: resp });
       }
     };

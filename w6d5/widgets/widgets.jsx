@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
           contents={['I am the first', 'second pane here', 'third pane here']}
         />
         <AutoComplete
-          names={['Abba', 'Barney', 'Barbara', 'Emily', 'Jay', 'Joel', 'Jared', 'Josh', 'Stacy', 'Joe', 'Janel', 'Jess']}
+          names={['Dan', 'Emily','Holly','Laurel', 'Jay', 'Joel', 'Jared', 'Josh', 'Joe', 'Janell', 'Jess','Stacy','Town','Julius']}
         />
       </div>
     </div>

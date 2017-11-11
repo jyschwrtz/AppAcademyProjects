@@ -7,7 +7,6 @@ class Tabs extends React.Component {
     this.state = {
       selectedTabIndex: 0
     };
-    console.log(props);
     this.titles = props.titles;
     this.content = props.content;
   }

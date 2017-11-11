@@ -1,3 +1,7 @@
+h1 {
+  margin: 0;
+}
+
 .widgets {
   width: 500px;
   margin: auto;
@@ -21,6 +25,7 @@
   padding: 20px;
   background: blue;
   border: 1px solid black;
+  margin-bottom: 20px;
 }
 
 .clock-time, .clock-date{
@@ -31,6 +36,23 @@
 
 .clock-time h1, .clock-date h1 {
   margin: 0;
+}
+
+.weather-widget {
+  width: 500px;
+}
+
+.weather-box {
+  color: black;
+  padding: 20px;
+  background: yellow;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.weather-city, .weather-description, .weather-temperature {
+  display: flex;
+  justify-content: space-between;
 }
 
 .tab-titles {
@@ -55,7 +77,8 @@
 }
 
 .tab:hover {
-  background: #8ac9dd;
+  background: black;
+  color: white;
 }
 
 .tab-selected {
@@ -84,23 +107,29 @@
   margin-top: 0;
 }
 
-.tab-widget-title>h1 {
-  margin-bottom: 0;
-  margin-top: 30px;
+.small-widgets {
+  display: flex;
+  justify-content: space-between;
 }
 
-.weather-widget {
-  width: 500px;
+.AC-widget {
+  width: 250px;
 }
 
-.weather-box {
+.AC-box {
   color: black;
   padding: 20px;
-  background: yellow;
+  background: green;
   border: 1px solid black;
 }
 
-.weather-city, .weather-description, .weather-temperature {
-  display: flex;
-  justify-content: space-between;
+.AC-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.AC-input:focus {
+  border: 1px solid blue;
 }
