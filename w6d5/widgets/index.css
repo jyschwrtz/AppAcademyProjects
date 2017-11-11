@@ -88,3 +88,19 @@
   margin-bottom: 0;
   margin-top: 30px;
 }
+
+.weather-widget {
+  width: 500px;
+}
+
+.weather-box {
+  color: black;
+  padding: 20px;
+  background: yellow;
+  border: 1px solid black;
+}
+
+.weather-city, .weather-description, .weather-temperature {
+  display: flex;
+  justify-content: space-between;
+}
