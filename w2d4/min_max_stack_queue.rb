@@ -73,41 +73,41 @@ end
 class StackQueue
   attr_reader :store, :temp
   def initialize
-    @temp = MyStack.new
-    @store = MyStack.new
+    @in_stack = MyStack.new
+    @out_stack = MyStack.new
   end
 
   def enqueue(arg)
-    @temp.push(arg)
+    @in_stack.push(arg)
   end
 
   def dequeue
-    if @store.empty?
-      @store.push(@temp.pop[:value]) until @temp.empty?
+    if @out_stack.empty?
+      @out_stack.push(@in_stack.pop[:value]) until @in_stack.empty?
     end
-    @store.pop
+    @out_stack.pop[:value]
   end
 
   def size
-    @store.size + @temp.size
+    @out_stack.size + @in_stack.size
 
   end
 
   def empty?
-    @store.empty? && @temp.empty?
+    @out_stack.empty? && @in_stack.empty?
   end
 
   def max
     maxes = []
-    maxes << @store.max unless @store.empty?
-    maxes << @temp.max unless @temp.empty?
+    maxes << @out_stack.max unless @out_stack.empty?
+    maxes << @in_stack.max unless @in_stack.empty?
     maxes.max
   end
 
   def min
     mins = []
-    mins << @store.min unless @store.empty?
-    mins << @temp.min unless @temp.empty?
-    mins.max
+    mins << @out_stack.min unless @out_stack.empty?
+    mins << @in_stack.min unless @in_stack.empty?
+    mins.min
   end
 end
