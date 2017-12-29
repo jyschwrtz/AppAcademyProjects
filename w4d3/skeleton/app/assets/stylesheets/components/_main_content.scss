@@ -1,0 +1,93 @@
+article {
+  font-family: $serif;
+  padding: 5px;
+  border-bottom: 1px solid $light-gray;
+}
+
+section article:last-child {
+  border-bottom: none;
+}
+
+h1, h2, h3, h4 {
+  padding: 2px 0px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.headline {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.headline:hover, .title:hover {
+  text-decoration: underline;
+}
+
+.author {
+  color: $gray;
+  font-size: 11px;
+}
+
+
+.article_list {
+  list-style: disc;
+  // list-style-position: inside;
+}
+
+.article_list > li {
+  padding: 3px 0;
+}
+
+input {
+  border: 1px solid $dark-gray;
+  padding: 5px;
+  margin-right: 0;
+  color: $gray;
+  width: 75%;
+
+}
+
+.comments {
+  color: $blue;
+}
+
+.comments:hover {
+  text-decoration: underline;
+}
+
+.opinions {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+}
+
+.column-type {
+  font-size: 11px;
+  font-family: $sans-serif;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold
+}
+
+.thumbnail {
+  height: 100px;
+  object-fit: cover;
+}
+
+.sign_up_text {
+  color: $gray;
+  text-align: center;
+  font-size: 10px;
+  padding: 3px;
+}
