@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+#io9JtEaqVsYxPtNAdRFygQ
+require "launchy"
+
+puts "Please provide your email"
+email = gets.chomp
+user = User.find_by(email: email)
+
+puts "Would you like to visit a URL (1) or create one (2)?"
+input = gets.chomp.to_i
+
+
+def process_input(input,user)
+  if input == 1
+    puts "Please provide shortened URL"
+    short = gets.chomp
+    shortened_url = ShortenedUrl.find_by(short_url: short)
+    Visit.record_visit!(user, shortened_url).save
+    long = shortened_url.long_url
+    Launchy.open(long)
+  elsif input == 2
+    puts "Please provide long URL"
+    long = gets.chomp
+    shortened_url = ShortenedUrl.create!(user,long)
+    shortened_url.save
+    p shortened_url.short_url
+  else
+    p "not valid input"
+  end
+end
+
+
+process_input(input,user)
