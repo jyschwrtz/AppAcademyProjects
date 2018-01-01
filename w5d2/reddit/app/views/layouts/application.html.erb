@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reddit</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+
+      <nav>
+        <h1><a class="link" href="<%= subs_url %>">Reddit</a></h1>
+
+      </nav>
+
+      <% if logged_in? %>
+        <%= "Welcome #{current_user.username}" %>
+        <%= button_to "Log Out", session_url, method: :delete, class: 'btn' %>
+      <% else %>
+        <%= button_to "Sign In", new_session_url, method: :get, class: 'btn' %>
+        <%= button_to "Create New User", new_user_url, method: :get, class: 'btn' %>
+      <% end %>
+
+
+    </header>
+    <main>
+
+      <% flash[:errors].try(:each) do |error| %>
+      <li><%= error %></li>
+      <% end %>
+
+      <%= yield %>
+  </main>
+  </body>
+</html>

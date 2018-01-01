@@ -1,0 +1,30 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments li {
+  display: block;
+  // border: 1px solid black;
+
+}
+
+.author {
+  font-weight: 700;
+}
+
+.post_index li {
+  width: 500px;
+  display: flex;
+  border: 1px solid white;
+  justify-content: space-between;
+}
+
+.post_index section {
+  // display: flex;
+  // justify-content: space-between;
+  // width: inherit;
+}
+
+.post_index {
+  width: 500px;
+}
