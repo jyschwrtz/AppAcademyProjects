@@ -6,7 +6,7 @@ class Array
   def hash
     total = 0
     self.each_with_index do |val, idx|
-      total += (val * (idx + 1)).hash
+      total += (val * (idx + 1)).hash + 1
     end
     total
   end
