@@ -16,6 +16,7 @@ class HashMap
   end
 
   def get(key)
+    bucket(key)
   end
 
   def delete(key)
@@ -46,5 +47,6 @@ class HashMap
 
   def bucket(key)
     # optional but useful; return the bucket corresponding to `key`
+    @store[key.hash % num_buckets]
   end
 end

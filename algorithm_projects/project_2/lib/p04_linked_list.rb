@@ -1,11 +1,11 @@
 class Node
-  attr_accessor :key, :val, :next, :prev
+  attr_accessor :key, :val, :prev, :next
 
   def initialize(key = nil, val = nil)
     @key = key
     @val = val
-    @next = nil
     @prev = nil
+    @next = nil
   end
 
   def to_s
@@ -13,10 +13,10 @@ class Node
   end
 
   def remove
-    # optional but useful, connects previous node to next node
+    # optional but useful, connects nextious node to prev node
     # and removes self from list.
-    # self.next.prev = self.prev
     # self.prev.next = self.next
+    # self.next.prev = self.prev
   end
 end
 
@@ -26,8 +26,8 @@ class LinkedList
   def initialize
     @head = Node.new
     @tail = Node.new
-    @head.prev = @tail
-    @tail.next = @head
+    @head.next = @tail
+    @tail.prev = @head
   end
 
   def [](i)
@@ -36,15 +36,15 @@ class LinkedList
   end
 
   def first
-    @head.prev
+    @head.next
   end
 
   def last
-    @tail.next
+    @tail.prev
   end
 
   def empty?
-    @tail.next == @head
+    @tail.prev == @head
   end
 
   def get(key)
@@ -63,12 +63,12 @@ class LinkedList
 
   def append(key, val)
     node = Node.new(key, val)
-    ahead = @tail.next
+    ahead = @tail.prev
     behind = @tail
-    ahead.prev = node
-    behind.next = node
-    node.prev = behind
-    node.next = ahead
+    ahead.next = node
+    behind.prev = node
+    node.next = behind
+    node.prev = ahead
   end
 
   def update(key, val)
@@ -84,20 +84,20 @@ class LinkedList
   def remove(key)
     self.each do |node|
       if node.key == key
-        p node.prev.key
-        p node.key
         p node.next.key
-        node.prev.next = node.next
+        p node.key
+        p node.prev.key
         node.next.prev = node.prev
+        node.prev.next = node.next
       end
     end
   end
 
   def each
-    current_node = @head.prev
+    current_node = @head.next
     until current_node == @tail
       yield current_node
-      current_node = current_node.prev
+      current_node = current_node.next
     end
     return self
   end
