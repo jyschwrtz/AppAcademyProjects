@@ -1,0 +1,13 @@
+<h1>Create Goal</h1>
+
+<form class="" action="<%= goals_url %>" method="post">
+  <label for="Goal">Goal</label>
+    <input id="Goal" type="text" name="goal[body]" value="">
+
+  <label for="Public">Public</label>
+  <input id="Public" type="radio" name="goal[private]" value="false" checked="checked">
+  <label for="Private">Private</label>
+  <input id="Private" type="radio" name="goal[private]" value="true">
+
+  <input type="submit" name="" value="Create Goal">
+</form>
