@@ -62,7 +62,7 @@ class BinaryMinHeap
         child_left = array[child_indices[0]]
         child_right = array[child_indices[1]]
 
-        if prc.call(child_left, child_right) < 1
+        if prc.call(child_left, child_right) < 0
           child_val = child_left
           child_idx = child_indices[0]
         else
@@ -76,11 +76,14 @@ class BinaryMinHeap
 
       if child_val == nil
         break
-      elsif prc.call(parent_val, child_val) >= 1
+      elsif prc.call(parent_val, child_val) > 0
+        # p prc.call(parent_val, child_val)
         sorted = false
         array[parent_idx] = child_val
         array[child_idx] = parent_val
         parent_idx = child_idx
+      else
+        # p prc.call(parent_val, child_val)
       end
     end
 
@@ -98,7 +101,6 @@ class BinaryMinHeap
       child_val = array[child_idx]
       parent_idx = self.parent_index(child_idx)
       parent_val = array[parent_idx]
-
       if prc.call(parent_val, child_val) >= 1
         sorted = false
         array[parent_idx] = child_val
