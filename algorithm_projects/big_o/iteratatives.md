@@ -30,6 +30,8 @@ let iterative_2 = (n) => {
 ```
 Time Complexity: O(n * log(n))
 
+Correct Answer: n * ( n + 1 ) / 2 ==> n^2
+
 #### Problem 3
 ```
 let iterative_3 = (n, m) => {
