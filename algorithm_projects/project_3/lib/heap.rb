@@ -55,10 +55,10 @@ class BinaryMinHeap
 
       parent_val = array[parent_idx]
       child_indices = self.child_indices(len, parent_idx)
-      if child_indices.length == 1
+      if child_indices.length == 1 && child_indices[0] < len
         child_val = array[child_indices[0]]
         child_idx = child_indices[0]
-      elsif child_indices.length == 2
+      elsif child_indices.length == 2 && child_indices[1] < len
         child_left = array[child_indices[0]]
         child_right = array[child_indices[1]]
 
@@ -95,7 +95,7 @@ class BinaryMinHeap
 
     prc = prc || Proc.new { |x, y| x <=> y }
 
-    while sorted == false && child_idx != 0
+    while sorted == false && child_idx != 0 && child_idx < len
       sorted = true
 
       child_val = array[child_idx]
