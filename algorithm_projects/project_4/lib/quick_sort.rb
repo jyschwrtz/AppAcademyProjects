@@ -26,7 +26,8 @@ class QuickSort
     prc ||= Proc.new { |x, y| x <=> y }
 
     res_pos = self.partition(array, start, length, &prc)
-    self.sort2!(array, 0, res_pos, &prc) + [array[res_pos]] + self.sort2!(array, res_pos + 1, length - res_pos, &prc)
+
+    self.sort2!(array, start, res_pos - start, &prc) + [array[res_pos]] + self.sort2!(array, start + res_pos + 1, length - res_pos - 1, &prc)
 
   end
 
