@@ -27,8 +27,10 @@ class QuickSort
 
     res_pos = self.partition(array, start, length, &prc)
 
-    self.sort2!(array, start, res_pos - start, &prc) + [array[res_pos]] + self.sort2!(array, start + res_pos + 1, length - res_pos - 1, &prc)
+    self.sort2!(array, start, res_pos - start, &prc)
+    self.sort2!(array, start + res_pos + 1, length - res_pos - 1, &prc)
 
+    array
   end
 
   def self.partition(array, start, length, &prc)
