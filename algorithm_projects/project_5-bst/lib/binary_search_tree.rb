@@ -42,7 +42,14 @@ class BinarySearchTree
         parent_del.right = nil
       end
     elsif num_children == 1
-      
+      if node_del.left
+        child_replace_parent(node_del, node_del.left)
+      else
+        child_replace_parent(node_del, node_del.right)
+      end
+    else
+      max_left_node = maximum(node_del.left)
+      child_replace_node(node_del, max_left_node)
     end
   end
 
@@ -113,4 +120,28 @@ class BinarySearchTree
     count
   end
 
+  def child_replace_parent(target_node, child_node)
+    parent_node = target_node.parent
+    if parent_node
+      if parent_node.left == target_node
+        parent_node.left = child_node
+      else
+        parent_node.right = child_node
+      end
+      child_node.parent = parent_node
+    else
+      child_node.parent = nil
+    end
+  end
+
+  def child_replace_node(target_node, child_node)
+    if child_node.left
+      child_replace_parent(child_node, child_node.left)
+    elsif child_node.right
+      child_replace_parent(child_node, child_node.right)
+    end
+    child_replace_parent(target_node, child_node)
+    child_node.left = target_node.left unless child_node == target_node.left
+    child_node.right = target_node.right unless child_node == target_node.right
+  end
 end
