@@ -31,16 +31,18 @@ class BinarySearchTree
 
   def delete(value)
     node_del = find(value, @root)
+    num_children = child_count(node_del)
+    parent_del = node_del.parent
     if @root == node_del
       @root = nil
-    elsif node_del.left == nil && node_del.right == nil
-      parent_del = node_del.parent
+    elsif num_children == 0
       if parent_del.left == node_del
         parent_del.left = nil
       else
         parent_del.right = nil
       end
-    # elsif
+    elsif num_children == 1
+      
     end
   end
 
@@ -53,17 +55,33 @@ class BinarySearchTree
   end
 
   def depth(tree_node = @root)
-    # count = 0
-    # until tree_node.right == nil && tree_node.left == nil
-    #
-    # end
-    # count
+    return 0 if tree_node == nil
+    return 0 if child_count(tree_node) == 0
+    left_side = 1 + depth(tree_node.left)
+    right_side = 1 + depth(tree_node.right)
+    left_side > right_side ? left_side : right_side
   end
 
   def is_balanced?(tree_node = @root)
+    return true if tree_node == nil
+    return true if child_count(tree_node) == 0
+    diff = depth(tree_node.left) - depth(tree_node.right)
+    return false if diff > 1 || diff < -1
+    if is_balanced?(tree_node.left) && is_balanced?(tree_node.right)
+      return true
+    end
+    false
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
+    if tree_node.left
+      in_order_traversal(tree_node.left, arr)
+    end
+    arr << tree_node.value
+    if tree_node.right
+      in_order_traversal(tree_node.right, arr)
+    end
+    arr
   end
 
 
@@ -86,6 +104,13 @@ class BinarySearchTree
         parent_node.right = new_node
       end
     end
+  end
+
+  def child_count(parent_node)
+    count = 0
+    count += 1 if parent_node.left
+    count += 1 if parent_node.right
+    count
   end
 
 end
