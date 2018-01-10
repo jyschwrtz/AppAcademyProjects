@@ -3,28 +3,27 @@ require_relative 'graph'
 # Implementing topological sort using both Khan's and Tarian's algorithms
 
 def topological_sort(vertices)
-  list = []
+  in_edges = {}
   queue = []
-  at_least_one = false
-  until vertices.length < 1 || at_least_one
-    p vertices.length
-    at_least_one = true
-    vertices.each do |vertex|
-      if vertex.in_edges.empty?
-        queue << vertex
-        vertices.delete(vertex)
-        at_least_one = false
-      end
-    end
-    until queue.empty?
-      node = queue.shift
-      if list.include?(node)
-        return []
-      else
-        list << node
-        node.out_edges.each { |edge| edge.destroy! }
-      end
-    end
+  order = []
+
+  vertices.each do |vert|
+    in_edge_count = vert.in_edges.reduce(0){ |accum, edge| accum += edge.cost }
+    in_edges[vert] = in_edge_count
+    queue << vert if in_edge_count == 0
   end
-  list
+
+  until queue.empty?
+    vertex = queue.shift
+
+    vertex.out_edges.each do |edge|
+      new_vertex = edge.to_vertex
+      in_edges[new_vertex] -= edge.cost
+      queue << new_vertex if in_edges[new_vertex] == 0
+    end
+
+    order << vertex
+  end
+
+  vertices.length == order.length ? order : []
 end
