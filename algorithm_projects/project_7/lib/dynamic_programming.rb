@@ -43,7 +43,27 @@ class DynamicProgramming
   end
 
   def super_frog_hops(n, k)
+    super_frog_cache_builder(n, k)[n]
+  end
 
+  def super_frog_cache_builder(n, k)
+    @super_frog = { 1 => [[1]] }
+    (2..k).each do |num|
+      temp = []
+      (num - 1).times do |j|
+        temp[j] = @super_frog[num - j - 1].map { |arr| arr.dup << (j + 1)}
+      end
+      @super_frog[num] = temp.reduce(&:+).concat([[num]])
+    end
+
+    ((k + 1)..n).each do |num|
+      temp = []
+      k.times do |j|
+        temp[j] = @super_frog[num - (j + 1)].map { |arr| arr.dup << (j + 1) }
+      end
+      @super_frog[num] = temp.reduce(&:+)
+    end
+    @super_frog
   end
 
   def knapsack(weights, values, capacity)
