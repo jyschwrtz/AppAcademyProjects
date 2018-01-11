@@ -72,6 +72,14 @@ class DynamicProgramming
 
   # Helper method for bottom-up implementation
   def knapsack_table(weights, values, capacity)
+    solution_table = []
+
+    (0..capacity).each do |i|
+      solution_table[i] = []
+      (0..weights.length - 1).each do |j|
+        if i == 0
+          solution_table[i][j] = 0
+        elsif j == 0
 
   end
 
